@@ -16,6 +16,7 @@ This project aims to visualize and categorize the different types of problems fa
   
 ### Nice to Have
 - **Analyze Feedback and Suggest Solutions**: Based on categorized feedback, the system can analyze trends and suggest solutions for issues such as improving customer service, product quality, or pricing strategies.
+- **Keyword Trend Gueeser**: Based on the all feedbacks, they system can analyze what specific thing they mention in a positive and a negative feedback.
 
 ## Tech Stack
 - **Frontend**: [Next.js](https://nextjs.org/) with [TypeScript](https://www.typescriptlang.org/)
@@ -33,22 +34,22 @@ This project aims to visualize and categorize the different types of problems fa
 
 
 **Feedback Data**
-| Field   | Type   |
-| ------- | -----  |
-| id|  int   |
-|company_id|  int   |
-| display_name    | String |
-| star_rating   | int |
-| comment   | String |
+| Field        | Type   |
+| -------      | -----  |
+| id           |  int   |
+| company_id   |  int   |
+| display_name | String |
+| star_rating  | int    |
+| comment      | String |
 | created_at   | String/Date |
 | updated_at   | String/Date |
-| reply  | String |
+| reply        | String |
 
 
 **Company Feedback**
 | Field   | Type   |
 | ------- | -----  |
-| id |  int   |
+| id      |  int   |
 | company_id  | id |
 
 
