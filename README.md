@@ -53,6 +53,10 @@ This project aims to visualize and categorize the different types of problems fa
 | company_id  | id |
 
 
+## Install Dependencies
+In the terminal, "pip install -r requirements.txt" to install all required dependencies.
+
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
