@@ -54,7 +54,11 @@ This project aims to visualize and categorize the different types of problems fa
 
 
 ## Install Dependencies
-In the terminal, "pip install -r requirements.txt" to install all required dependencies.
+In the terminal, 
+1, "python3 -m venv venv" to download python
+2, "source venv/bin/activate"
+3, "pip install -r requirements.txt" to install all required dependencies.
+4, 
 
 
 ## License
