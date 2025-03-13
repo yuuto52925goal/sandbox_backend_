@@ -106,3 +106,14 @@ def send_reviews_to_summarizer(reviews: List[str]):
     response = messages.data[0].content[0].text.value if messages.data else "No response received."
 
     return response
+
+# Example Response
+'''
+{
+  "summary": "The salad was inadequately prepared, with large lettuce chunks and missing ingredients
+        like banana peppers, olives, and tomatoes. In contrast, the service was commendable with friendly
+        staff and quick food delivery.",
+  "next_action": "Review and standardize salad preparation procedures and provide staff training to 
+        ensure consistency, especially for to-go orders."
+}
+'''
