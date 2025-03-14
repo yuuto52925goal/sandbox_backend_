@@ -17,6 +17,8 @@ def create_app():
 
     # Import and register blueprints
     from .routes import main
+    from .handler.fetch_feedback_route import fetch_feedback_blueprint
+    app.register_blueprint(fetch_feedback_blueprint)
     app.register_blueprint(main)
 
     return app
