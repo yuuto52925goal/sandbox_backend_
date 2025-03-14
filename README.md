@@ -53,13 +53,19 @@ This project aims to visualize and categorize the different types of problems fa
 | company_id  | id |
 
 
-## Install Dependencies
+## Project Setting
+
+# Install dependencies
 In the terminal, 
 1, "python3 -m venv venv" to download python
 2, "source venv/bin/activate"
 3, "pip install -r requirements.txt" to install all required dependencies.
-4, 
+# Define env file
+1, Make .env file under your root directry which is "sandbox_backend_"
+2, Define SUPABASE_DB_URL and SUPABASE_ANON_KEY
 
+# Run the command to execute flask server
+"python3 run.py"
 
 ## License
 

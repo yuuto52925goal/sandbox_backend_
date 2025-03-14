@@ -1,5 +1,12 @@
-from app import app
+from flask import Blueprint, jsonify
+from . import supabase
 
-@app.route('/')
+main = Blueprint('main', __name__)
+
+@main.route('/', methods=['GET'])
 def home():
-    return "Hello, World!"
+    try:
+        response = supabase.table('company').select('*', count='exact').execute()
+        return jsonify(response.data)
+    except Exception as e:
+        return jsonify({"error": str(e)})
