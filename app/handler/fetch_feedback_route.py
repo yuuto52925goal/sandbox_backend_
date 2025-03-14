@@ -22,4 +22,4 @@ def get_feedback():
         return jsonify({"message": feedback_result}), 200
     except Exception as e:
         assert e
-        return jsonify({"error": "invalid call"}), 500
+        return jsonify({"error": f"invalid call {e}"}), 500
