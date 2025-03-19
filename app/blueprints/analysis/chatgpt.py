@@ -2,6 +2,7 @@ import openai
 import os
 from dotenv import load_dotenv
 from typing import List
+from flask import jsonify
 
 # Load environment variables from .env file
 load_dotenv()
@@ -13,7 +14,7 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 client = openai.OpenAI(api_key=OPENAI_API_KEY)
 
 
-def send_review_to_ai(review):
+def send_review_to_categorizer(review):
     # Create a new thread
     thread = client.beta.threads.create()
 
