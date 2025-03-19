@@ -25,12 +25,13 @@ class GooglemapService():
     def get_save_feedback(self, place_id: str):
         data_list = self.get_feedback(place_id)
         company = FeedbackDAO.get_company_by_place_id(place_id)
-        # If no company exsit, add a new row in company
-        company_id = company["id"]
-        print(company_id)
-        # print(data_list)
+        company_id = company["id"] if company else None
         for data in data_list:
-            FeedbackDAO.create_new_feedback(None, data["rating"], data["author_name"], data["text"], None, None, company_id)
+            try: 
+                unique_feedback = str(data["time"]) + str(data["text"]) + str(company_id)
+                FeedbackDAO.create_new_feedback(data["time"], data["rating"], data["author_name"], data["text"], None, None, company_id, unique_feedback)
+            except Exception:
+                pass
         return "Success"
     
 
