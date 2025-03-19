@@ -4,7 +4,8 @@ import datetime
 class FeedbackDAO():
 
     @staticmethod
-    def create_new_feedback(created_date, rate, display_name, comment, update_at, reply, company_id):
+    def create_new_feedback(created_date, rate, display_name, comment, update_at, reply, company_id, unique_feedback):
+        # If it is exsit, don't duplicate
         if isinstance(update_at, datetime.time):
             update_at = update_at.isoformat()
         elif isinstance(update_at, str):
@@ -14,6 +15,8 @@ class FeedbackDAO():
             created_date = created_date.isoformat()
         elif isinstance(created_date, str):
             created_date = datetime.datetime.fromisoformat(created_date).time().isoformat()
+        elif isinstance(created_date, (int, float)):
+            created_date = datetime.datetime.fromtimestamp(created_date).time().isoformat()
 
         feedback_data = {
             "created_at": created_date,
@@ -22,12 +25,12 @@ class FeedbackDAO():
             "display_name": display_name,
             "comment": comment,
             "reply": reply,
-            "company_id": company_id
+            "company_id": company_id,
+            "unique_feedback": unique_feedback
         }
         feedback_data = {k: v for k, v in feedback_data.items() if v is not None}
-        print(feedback_data)
-        response = supabase.table("feedback").insert(feedback_data).execute() 
-        print(response)
+        supabase.table("feedback").insert(feedback_data).execute() 
+    
 
     @staticmethod
     def get_feedback_by_id(feedback_id):
@@ -63,4 +66,14 @@ class FeedbackDAO():
         if response.data:
             return response.data[0]  # Return the first (and only) feedback entry
         else:
+            return None
+    
+    @staticmethod
+    def get_company_by_place_id(place_id: str):
+        response = supabase.table('company').select('id').eq("placeId", place_id).execute()
+
+        if response.data: 
+            return response.data[0]
+        else: 
+            print("data None")
             return None
