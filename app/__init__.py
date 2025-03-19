@@ -20,7 +20,7 @@ def create_app():
     from .routes import main
     from .blueprints.feedback import feedback_bp
 
-    app.register_blueprint(feedback_bp)
+    app.register_blueprint(feedback_bp, url_prefix='/feedback')
     app.register_blueprint(main)
 
     return app
