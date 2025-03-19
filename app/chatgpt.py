@@ -51,7 +51,19 @@ user_message = "Categorize this review: 'The food was cold and the service was s
 response = send_review_to_ai(user_message)
 '''
 
-#  Response Example:
+#  Response Example1:
+'''
+{
+  "positive": [
+    "Product/Service Quality",
+    "Atmosphere/Environment"
+  ],
+  "negative": [
+    "Customer Service"
+  ]
+}
+'''
+#  Response Example2:
 '''
 {
   "negative": [

@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 import os
 import requests
-from ..dataaccess.feedback_dao import FeedbackDAO
+from blueprints.feedback.feedback_dao import FeedbackDAO
 
 class GooglemapService():
     def __init__(self) -> None:
@@ -16,11 +16,16 @@ class GooglemapService():
         feedback_data = feedback_response.json()
 
         if "result" in feedback_data and "reviews" in feedback_data["result"]:
-            print(feedback_data["result"]["reviews"])
-            data = feedback_data["result"]["reviews"][0]
-            FeedbackDAO.create_new_feedback(None, data["rating"], data["author_name"], data["text"], None, None, None)
+            data = feedback_data["result"]["reviews"]
+            return data
         else:
-            print("No data")
-        return "Hello"
+            return "No Data"
+        
+    def save_all_feedback(self, place_id):
+        data_list = self.get_feedback(place_id)
+        for data in data_list:
+            FeedbackDAO.create_new_feedback(None, data["rating"], data["author_name"], data["text"], None, None, None)
     
 
+# googleservice = GooglemapService()
+# print(googleservice.get_feedback("ChIJgSylYwqaTYcRqg0630gwyY0"))

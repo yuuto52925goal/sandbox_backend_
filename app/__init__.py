@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 import os
 from supabase import create_client, Client
 
+
 load_dotenv()
 
 SUPABASE_URL = os.getenv("SUPABASE_DB_URL")
@@ -17,8 +18,9 @@ def create_app():
 
     # Import and register blueprints
     from .routes import main
-    from .handler.fetch_feedback_route import fetch_feedback_blueprint
-    app.register_blueprint(fetch_feedback_blueprint)
+    from blueprints.feedback import feedback_bp
+
+    app.register_blueprint(feedback_bp)
     app.register_blueprint(main)
 
     return app

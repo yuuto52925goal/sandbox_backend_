@@ -1,13 +1,14 @@
-from . import fetch_feedback_blueprint
-from flask import jsonify, request
-from ..services.googlemap_service import GooglemapService
+from flask import jsonify, request, Blueprint
+from app.services.googlemap_service import GooglemapService
 
-@fetch_feedback_blueprint.route("/get_feedback", methods=["GET"])
+feedback_bp = Blueprint('feedback', __name__)
+
+@feedback_bp.route("/get_feedback", methods=["GET"])
 def fetch_feedback():
     return "Hello"
 
 
-@fetch_feedback_blueprint.route("/get_feedback", methods=["POST"])
+@feedback_bp.route("/get_feedback", methods=["POST"])
 def get_feedback():
     try:
         data = request.get_json()
