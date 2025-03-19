@@ -1,6 +1,7 @@
 from flask import jsonify, request, Blueprint
 from app.services.googlemap_service import GooglemapService
 
+
 feedback_bp = Blueprint('feedback', __name__)
 
 @feedback_bp.route("/get_feedback", methods=["GET"])
