@@ -5,6 +5,7 @@ class FeedbackDAO():
 
     @staticmethod
     def create_new_feedback(created_date, rate, display_name, comment, update_at, reply, company_id):
+        # If it is exsit, don't duplicate
         if isinstance(update_at, datetime.time):
             update_at = update_at.isoformat()
         elif isinstance(update_at, str):
@@ -63,4 +64,15 @@ class FeedbackDAO():
         if response.data:
             return response.data[0]  # Return the first (and only) feedback entry
         else:
+            return None
+    
+    @staticmethod
+    def get_company_by_place_id(place_id: str):
+        response = supabase.table('company').select('id').eq("placeId", place_id).execute()
+        print(response)
+
+        if response.data: 
+            return response.data[0]
+        else: 
+            print("data None")
             return None
