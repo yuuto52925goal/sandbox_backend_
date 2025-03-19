@@ -18,7 +18,7 @@ def create_app():
 
     # Import and register blueprints
     from .routes import main
-    from blueprints.feedback import feedback_bp
+    from .blueprints.feedback import feedback_bp
 
     app.register_blueprint(feedback_bp)
     app.register_blueprint(main)
