@@ -1,5 +1,5 @@
 from flask import jsonify, request, Blueprint
-from app.services.googlemap_service import GooglemapService
+from app.blueprints.feedback.googlemap_service import GooglemapService
 
 
 feedback_bp = Blueprint('feedback', __name__)

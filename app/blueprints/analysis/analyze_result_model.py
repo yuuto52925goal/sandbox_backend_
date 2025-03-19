@@ -1,1 +1,0 @@
-# class AnalyzeResult(db.Model):

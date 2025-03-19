@@ -2,6 +2,7 @@ import openai
 import os
 from dotenv import load_dotenv
 from typing import List
+from flask import jsonify
 
 # Load environment variables from .env file
 load_dotenv()
@@ -13,7 +14,7 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 client = openai.OpenAI(api_key=OPENAI_API_KEY)
 
 
-def send_review_to_ai(review):
+def send_review_to_categorizer(review):
     # Create a new thread
     thread = client.beta.threads.create()
 
@@ -90,11 +91,8 @@ def send_reviews_to_summarizer(reviews: List[str]):
     # Categorizer Assistant ID
     ASSISTANT_ID = "asst_35MwiYRkiqOhrWhtx112hQG3"
 
-    combined_reviews = ""
-    for review in reviews:
-        combined_reviews += review
+    combined_reviews = "\n".join(reviews)
 
-    # Send message to the assistant
     client.beta.threads.messages.create(
         thread_id=thread.id,
         role="user",
@@ -113,11 +111,12 @@ def send_reviews_to_summarizer(reviews: List[str]):
 
     # Get the response message
     messages = client.beta.threads.messages.list(thread_id=thread.id)
-    
+
     # Extract the latest response
     response = messages.data[0].content[0].text.value if messages.data else "No response received."
 
     return response
+
 
 # Example Response
 '''

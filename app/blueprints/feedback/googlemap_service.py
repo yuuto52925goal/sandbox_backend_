@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 import os
 import requests
-from ..blueprints.feedback.feedback_dao import FeedbackDAO
+from .feedback_dao import FeedbackDAO
 
 class GooglemapService():
     def __init__(self) -> None:

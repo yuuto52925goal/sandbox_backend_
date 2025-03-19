@@ -46,7 +46,7 @@ class FeedbackDAO():
         response = supabase.table("feedback").select("*").eq("id", feedback_id).execute()
         
         if response.data:
-            return response.data[0]  # Return the first (and only) feedback entry
+            return response.data  # Return the first (and only) feedback entry
         else:
             return None
 
@@ -64,7 +64,7 @@ class FeedbackDAO():
         response = supabase.table("feedback").select("*").eq("company_id", company_id).execute()
         
         if response.data:
-            return response.data[0]  # Return the first (and only) feedback entry
+            return response.data  # Return the first (and only) feedback entry
         else:
             return None
     
