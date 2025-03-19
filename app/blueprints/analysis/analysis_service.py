@@ -78,14 +78,12 @@ class AnalysisService:
             all_comments.append(feedback["comment"])
 
         summarizer_result = send_reviews_to_summarizer(all_comments)
-        
-        print(summarizer_result)
-        print(type(summarizer_result))
+        summarizer_result = json.loads(summarizer_result)
 
 
-        if "action" in summarizer_result:
+        if "next_action" in summarizer_result:
             action_suggestion = summarizer_result["next_action"]
-        if "summarize" in summarizer_result:
+        if "summary" in summarizer_result:
             feedback_summary = summarizer_result["summary"]
             
 
