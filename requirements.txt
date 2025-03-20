@@ -4,3 +4,4 @@ flask
 flask-sqlalchemy
 supabase
 requests
+flask-cors
