@@ -5,7 +5,7 @@ from .analyze_result_dao import AnalyzeResultDAO
 analysis_bp = Blueprint('analysis', __name__)
 
 
-@analysis_bp.route('/get_analyze_result', methods=["GET"])
+@analysis_bp.route('/get_analyze_result', methods=["POST"])
 def get_analyze_result():
     body = request.get_json()
     id = str(body.get('company_id'))
